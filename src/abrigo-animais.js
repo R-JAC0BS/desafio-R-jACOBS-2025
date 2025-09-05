@@ -1,4 +1,4 @@
-import { animaisParaAdocao } from "./dados.js";
+import { animaisParaAdocao } from "./data/dados.js";
 import { brinquedosSaoValidos, temBrinquedosNaOrdem } from "./utils.js";
 
 class AbrigoAnimais {

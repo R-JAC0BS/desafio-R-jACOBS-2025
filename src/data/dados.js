@@ -1,4 +1,4 @@
-import { Animais } from "./animais.js";
+import { Animais } from "../animais.js";
 
 const animaisParaAdocao = [
   new Animais("Rex", "Cão", "RATO,BOLA"),
