@@ -28,4 +28,15 @@ describe('Abrigo de Animais', () => {
       expect(resultado.lista.length).toBe(4);
       expect(resultado.erro).toBeFalsy();
   });
+  test('Pessoa já adotou antes e depois tenta adotar o Loco', () => {
+    const resultado = new AbrigoAnimais().encontraPessoas('BOLA,LASER',
+    'BOLA,NOVELO,RATO,LASER', 'Loco')
+    expect(resultado.lista[0]).toBe("Loco - abrigo"); 
+  })
+
+    test("deve retornar erro para brinquedo inválido", () => {
+    const resultado = new AbrigoAnimais().encontraPessoas("BOLA,INVALIDO", "NOVELO", "Rex");
+     expect(resultado.erro).toBe("Brinquedo inválido");;
+  });
+
 });
