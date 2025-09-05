@@ -1,7 +1,0 @@
-echo "# desafio-R-jACOBS-2025" >> README.md
-git init
-git add README.md
-git commit -m "Criado Classe Animais e primeiro teste passou"
-git branch -M main
-git remote add origin https://github.com/R-JAC0BS/desafio-R-jACOBS-2025.git
-git push -u origin main
