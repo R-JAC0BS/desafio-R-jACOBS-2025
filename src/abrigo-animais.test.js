@@ -47,19 +47,19 @@ describe('Abrigo de Animais', () => {
 
 
 
-    test('Loco sozinho segue regra normal', () => {
+  test('Loco sozinho segue regra normal', () => {
     const resultado = new AbrigoAnimais().encontraPessoas('SKATE,RATO', 'LASER', 'Loco');
     expect(resultado.lista[0]).toBe('Loco - pessoa 1');
     expect(resultado.lista.length).toBe(1);
     expect(resultado.erro).toBeFalsy();
   });
 
-  test ('Não pode adotar animal duplicad', () => {
+  test('Não pode adotar animal duplicad', () => {
     const resultado = new AbrigoAnimais().encontraPessoas('RATO,BOLA', 'RATO,BOLA', 'Rex,Rex')
-    expect(resultado.erro).toBe('Animal inválido' )
+    expect(resultado.erro).toBe('Animal inválido')
   })
 
-    test('Pessoa 1 não pode adotar dois gatos com brinquedo repetido', () => {
+  test('Pessoa 1 não pode adotar dois gatos com brinquedo repetido', () => {
     const resultado = new AbrigoAnimais().encontraPessoas(
       'BOLA,LASER,RATO',
       'NOVELO',
@@ -68,6 +68,32 @@ describe('Abrigo de Animais', () => {
 
     expect(resultado.lista[0]).toBe('Fofo - abrigo');
     expect(resultado.lista[1]).toBe('Mimi - pessoa 1');
+    expect(resultado.lista.length).toBe(2);
+    expect(resultado.erro).toBeFalsy();
+  });
+
+  test('Pessoa 2 não pode adotar dois gatos com brinquedo repetido', () => {
+    const resultado = new AbrigoAnimais().encontraPessoas(
+      'NOVELO',
+      'BOLA,LASER,RATO',
+      'Mimi,Fofo'
+    );
+
+    expect(resultado.lista[0]).toBe('Fofo - abrigo');
+    expect(resultado.lista[1]).toBe('Mimi - pessoa 2');
+    expect(resultado.lista.length).toBe(2);
+    expect(resultado.erro).toBeFalsy();
+  });
+
+  test('Loco com companhia vai para abrigo se ambos conseguem adotar', () => {
+    const resultado = new AbrigoAnimais().encontraPessoas(
+      'RATO,BOLA,SKATE',
+      'NOVELO,BOLA',
+      'Rex,Loco'
+    );
+    
+    expect(resultado.lista[0]).toBe('Loco - abrigo');
+    expect(resultado.lista[1]).toBe('Rex - pessoa 1');
     expect(resultado.lista.length).toBe(2);
     expect(resultado.erro).toBeFalsy();
   });
